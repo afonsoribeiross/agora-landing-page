@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ágora Engenharia Jr. – UEMA | São Luís, MA</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange:     #E8620A;
+  --orange-lt:  #F07830;
+  --orange-pale:#FDE8D8;
+  --dark:       #111111;
+  --dark-2:     #1A1A1A;
+  --dark-3:     #222222;
+  --dark-4:     #2E2E2E;
+  --gray:       #888888;
+  --gray-lt:    #BBBBBB;
+  --white:      #FFFFFF;
+  --off-white:  #F5F5F3;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--white);line-height:1.7;overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(17,17,17,0.95);
+  backdrop-filter:blur(8px);
+  padding:0 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+  border-bottom:1px solid rgba(255,255,255,0.07);
+}
+.nav-logo{height:36px;object-fit:contain}
+.nav-links{display:flex;gap:28px}
+.nav-links a{color:var(--gray-lt);text-decoration:none;font-size:13px;font-weight:400;letter-spacing:0.3px;transition:color 0.2s}
+.nav-links a:hover{color:var(--orange)}
+.nav-cta{
+  background:var(--orange);color:var(--white);
+  border:none;padding:8px 20px;border-radius:6px;
+  font-size:13px;font-weight:500;cursor:pointer;
+  text-decoration:none;font-family:'DM Sans',sans-serif;
+  transition:background 0.2s;
+}
+.nav-cta:hover{background:var(--orange-lt)}
+
+/* HERO */
+.hero{
+  background:var(--dark);
+  padding:5rem 2rem 4rem;
+  position:relative;overflow:hidden;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.hero-glow{
+  position:absolute;top:-100px;right:-100px;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle, rgba(232,98,10,0.12) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(232,98,10,0.12);border:1px solid rgba(232,98,10,0.3);
+  color:var(--orange);font-size:12px;font-weight:500;
+  padding:5px 12px;border-radius:20px;margin-bottom:1.5rem;letter-spacing:0.5px;
+}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--orange);border-radius:50%}
+.hero h1{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(32px,5vw,52px);font-weight:800;
+  color:var(--white);line-height:1.1;margin-bottom:1.25rem;
+}
+.hero h1 em{font-style:normal;color:var(--orange)}
+.hero p{font-size:15px;color:var(--gray-lt);max-width:480px;margin-bottom:2rem;font-weight:300;line-height:1.85}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{
+  background:var(--orange);color:var(--white);
+  border:none;padding:12px 28px;border-radius:6px;
+  font-size:14px;font-weight:500;cursor:pointer;
+  text-decoration:none;display:inline-block;
+  font-family:'DM Sans',sans-serif;transition:background 0.2s,transform 0.1s;
+}
+.btn-primary:hover{background:var(--orange-lt);transform:translateY(-1px)}
+.btn-secondary{
+  background:transparent;color:var(--gray-lt);
+  border:1px solid rgba(255,255,255,0.15);
+  padding:12px 28px;border-radius:6px;
+  font-size:14px;font-weight:400;cursor:pointer;
+  text-decoration:none;display:inline-block;
+  font-family:'DM Sans',sans-serif;transition:border-color 0.2s,color 0.2s;
+}
+.btn-secondary:hover{border-color:var(--orange);color:var(--orange)}
+.hero-logo-wrap{display:flex;align-items:center;justify-content:center}
+.hero-logo-wrap img{width:180px;height:180px;object-fit:contain;border-radius:16px;opacity:0.9}
+
+/* STATS */
+.stats-strip{background:var(--dark-2);border-bottom:1px solid rgba(255,255,255,0.06);padding:1.75rem 2rem}
+.stats-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.stat-item{text-align:center;padding:0.5rem}
+.stat-num{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;color:var(--orange)}
+.stat-label{font-size:12px;color:var(--gray);margin-top:3px;font-weight:300;letter-spacing:0.3px}
+
+/* SECTION BASE */
+.section{padding:4rem 2rem;max-width:860px;margin:0 auto}
+.section-label{font-size:11px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem}
+.section-title{font-family:'Syne',sans-serif;font-size:28px;font-weight:700;color:var(--white);margin-bottom:0.5rem;line-height:1.2}
+.section-sub{font-size:15px;color:var(--gray);margin-bottom:2.5rem;font-weight:300}
+
+/* SOBRE */
+.sobre-bg{background:var(--dark-2);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.about-text{font-size:15px;color:var(--gray-lt);line-height:1.9;font-weight:300}
+.about-text p+p{margin-top:1rem}
+.about-highlights{display:flex;flex-direction:column;gap:10px}
+.highlight-item{
+  background:var(--dark-3);
+  border:1px solid rgba(255,255,255,0.07);
+  border-left:3px solid var(--orange);
+  border-radius:0 8px 8px 0;
+  padding:14px 16px;
+}
+.highlight-item h4{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:var(--white);margin-bottom:3px}
+.highlight-item p{font-size:12px;color:var(--gray);font-weight:300}
+
+/* SERVICES */
+.services-bg{background:var(--dark);border-top:1px solid rgba(255,255,255,0.05)}
+.services-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+  gap:1px;background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.06);border-radius:12px;overflow:hidden;
+}
+.service-card{background:var(--dark-2);padding:1.5rem;transition:background 0.2s}
+.service-card:hover{background:var(--dark-3)}
+.service-icon{
+  width:36px;height:36px;background:rgba(232,98,10,0.1);
+  border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;
+}
+.service-icon svg{width:18px;height:18px;stroke:var(--orange);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.service-card h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:var(--white);margin-bottom:6px}
+.service-card p{font-size:12px;color:var(--gray);line-height:1.65;font-weight:300}
+
+/* TOOLS */
+.tools-bg{background:var(--dark-2);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05)}
+.tools-wrap{display:flex;flex-wrap:wrap;gap:10px}
+.tool-badge{
+  background:var(--dark-3);border:1px solid rgba(255,255,255,0.1);
+  color:var(--gray-lt);border-radius:6px;padding:8px 16px;
+  font-size:13px;font-weight:400;letter-spacing:0.3px;
+  transition:background 0.2s,color 0.2s,border-color 0.2s;cursor:default;
+}
+.tool-badge:hover{background:rgba(232,98,10,0.1);color:var(--orange);border-color:rgba(232,98,10,0.4)}
+
+/* PROJECTS */
+.projects-bg{background:var(--dark);border-top:1px solid rgba(255,255,255,0.05)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.project-card{
+  background:var(--dark-2);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:12px;padding:1.5rem;
+  transition:transform 0.2s,border-color 0.2s;
+  position:relative;overflow:hidden;
+}
+.project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--orange)}
+.project-card:hover{transform:translateY(-3px);border-color:rgba(232,98,10,0.3)}
+.project-tag{
+  display:inline-block;background:rgba(232,98,10,0.1);color:var(--orange);
+  font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;margin-bottom:10px;letter-spacing:0.3px;
+}
+.project-card h3{font-family:'Syne',sans-serif;font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;line-height:1.3}
+.project-card p{font-size:12px;color:var(--gray);line-height:1.7;font-weight:300}
+
+/* CONTATO */
+.contact-bg{background:var(--dark-2);border-top:1px solid rgba(255,255,255,0.05)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:16px}
+.contact-item{display:flex;align-items:flex-start;gap:14px}
+.contact-icon-wrap{
+  width:40px;height:40px;background:rgba(232,98,10,0.1);
+  border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.contact-icon-wrap svg{width:16px;height:16px;stroke:var(--orange);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.contact-item-label{font-size:11px;color:var(--gray);font-weight:400;margin-bottom:2px;letter-spacing:0.3px}
+.contact-item-value{font-size:14px;color:var(--white);font-weight:500;line-height:1.5}
+
+.contact-cta-box{
+  background:var(--dark-3);
+  border:1px solid rgba(232,98,10,0.2);
+  border-radius:12px;padding:2rem;
+  display:flex;flex-direction:column;gap:12px;
+}
+.contact-cta-box h3{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:var(--white);line-height:1.2}
+.contact-cta-box p{font-size:13px;color:var(--gray);font-weight:300;line-height:1.7}
+
+/* FOOTER */
+footer{
+  background:var(--dark);
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding:2rem;
+}
+.footer-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-logo{height:32px;object-fit:contain}
+.footer-text{font-size:12px;color:var(--gray);margin-top:4px;font-weight:300}
+.footer-links{display:flex;gap:20px}
+.footer-links a{color:var(--gray);font-size:12px;text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--orange)}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .nav-links{display:none}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-logo-wrap{display:none}
+  .about-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:1fr;gap:0.75rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <img src="data:image/png;base64,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" class="nav-logo" alt="Ágora Engenharia Jr.">
+  <div class="nav-links">
+    <a href="#sobre">Sobre</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#contato">Contato</a>
+  </div>
+  <a href="#contato" class="nav-cta">Fale conosco</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Empresa Júnior · UEMA · Fundada em 2017</div>
+      <h1>Soluções de <em>engenharia mecânica</em> com qualidade e preço acessível</h1>
+      <p>Desenvolvemos profissionais diferenciados por meio da vivência empresarial e entrega de soluções técnicas em Engenharia Mecânica para empresas e organizações de São Luís e do Maranhão.</p>
+      <div class="hero-actions">
+        <a href="#contato" class="btn-primary">Entre em contato</a>
+        <a href="#servicos" class="btn-secondary">Ver serviços</a>
+      </div>
+    </div>
+    <div class="hero-logo-wrap">
+      <img src="data:image/jpeg;base64,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" style="width:200px;height:200px;object-fit:contain;border-radius:16px;" alt="Ágora logo">
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">2017</div><div class="stat-label">Ano de fundação</div></div>
+    <div class="stat-item"><div class="stat-num">11–50</div><div class="stat-label">Membros ativos</div></div>
+    <div class="stat-item"><div class="stat-num">299+</div><div class="stat-label">Seguidores no LinkedIn</div></div>
+  </div>
+</div>
+
+<div class="sobre-bg">
+<section class="section fade-in" id="sobre">
+  <div class="section-label">Quem somos</div>
+  <div class="section-title">Sobre a Ágora Engenharia Jr.</div>
+  <div class="section-sub">Universidade e indústria conectadas por engenharia de verdade</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>A Ágora Engenharia Jr. foi fundada em 2017 como projeto de extensão da Universidade Estadual do Maranhão (UEMA), vinculada ao Curso de Engenharia Mecânica.</p>
+      <p>Somos compostos por acadêmicos comprometidos com inovação, responsabilidade e impacto, com foco no desenvolvimento do perfil empresarial, empreendedor e das habilidades técnicas dos integrantes por meio da execução de serviços reais de engenharia.</p>
+      <p>Acreditamos na força da conexão entre universidade e indústria, promovendo transformação por meio da engenharia. Nosso portfólio inclui clientes como AMBEV, empresas de transporte, laboratórios e indústrias do Maranhão.</p>
+    </div>
+    <div class="about-highlights">
+      <div class="highlight-item"><h4>Empresa Júnior de Engenharia</h4><p>Vinculada ao curso de Engenharia Mecânica da UEMA, São Luís – MA</p></div>
+      <div class="highlight-item"><h4>Projetos reais com clientes reais</h4><p>Entregamos projetos técnicos com rigor profissional e preço acessível</p></div>
+      <div class="highlight-item"><h4>Simulações avançadas</h4><p>SolidWorks e ANSYS para análise estrutural, térmica e dinâmica</p></div>
+      <div class="highlight-item"><h4>Conformidade normativa</h4><p>Projetos em conformidade com NR35, ASTM, ABNT e demais normas</p></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="services-bg">
+<section class="section fade-in" id="servicos">
+  <div class="section-label">O que fazemos</div>
+  <div class="section-title">Nossos serviços</div>
+  <div class="section-sub">Soluções técnicas completas em engenharia mecânica</div>
+  <div class="services-grid">
+    <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><h3>Projetos mecânicos</h3><p>Desenvolvimento de projetos estruturais e mecânicos completos com embasamento técnico</p></div>
+    <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><h3>Prototipagem 3D</h3><p>Impressão e prototipagem para validação de conceitos e fabricação de peças personalizadas</p></div>
+    <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div><h3>Climatização / PMOC</h3><p>Planejamento de sistemas de climatização e plano de manutenção preventiva obrigatória</p></div>
+    <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="M9 12h6M9 16h4"/></svg></div><h3>Planos de manutenção</h3><p>Criação de planos preventivos e corretivos para equipamentos e instalações industriais</p></div>
+    <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M7 16V4m0 0L3 8m4-4l4 4"/><path d="M17 8v12m0 0l4-4m-4 4l-4-4"/></svg></div><h3>Projetos de exaustão</h3><p>Sistemas de ventilação e exaustão industrial para ambientes seguros e eficientes</p></div>
+    <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg></div><h3>Ensaios mecânicos</h3><p>Testes e análises laboratoriais de materiais e componentes com rigor técnico</p></div>
+    <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><h3>Tratamentos térmicos</h3><p>Tratamento de corpos de prova para análise e qualificação de materiais</p></div>
+    <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Análise estrutural (FEA)</h3><p>Simulações no SolidWorks e ANSYS: tensão, deformação, flambagem e estabilidade global</p></div>
+  </div>
+</section>
+</div>
+
+<div class="tools-bg">
+<section class="section fade-in">
+  <div class="section-label">Tecnologia</div>
+  <div class="section-title">Ferramentas que utilizamos</div>
+  <div class="section-sub">Software e recursos para projetos de alta precisão</div>
+  <div class="tools-wrap">
+    <span class="tool-badge">SolidWorks</span>
+    <span class="tool-badge">ANSYS</span>
+    <span class="tool-badge">AutoCAD</span>
+    <span class="tool-badge">Power BI</span>
+    <span class="tool-badge">Excel avançado</span>
+    <span class="tool-badge">Impressora 3D</span>
+  </div>
+</section>
+</div>
+
+<div class="projects-bg">
+<section class="section fade-in" id="projetos">
+  <div class="section-label">Cases de sucesso</div>
+  <div class="section-title">Projetos realizados</div>
+  <div class="section-sub">Soluções técnicas entregues a clientes reais de diferentes setores</div>
+  <div class="projects-grid">
+    <div class="project-card"><span class="project-tag">Segurança · NR35</span><h3>Linha de vida – empresa de ônibus</h3><p>Análise estrutural de sistema de linha de vida para manutenção em alturas superiores a 2m. Dimensionamento de vigas, cabos e pontos de ancoragem com simulações no SolidWorks.</p></div>
+    <div class="project-card"><span class="project-tag">Indústria · AMBEV</span><h3>Monovia – AMBEV</h3><p>Análise de alterações estruturais em monovia industrial com simulações de flambagem, estabilidade global e verificação de parafusos. Materiais ASTM A36.</p></div>
+    <div class="project-card"><span class="project-tag">Laboratório · Industrial</span><h3>Suporte para capela de exaustão</h3><p>Projeto, simulação e construção de suporte para até 400 kg, com rodas de alta resistência e pintura anticorrosiva. Validado via SolidWorks.</p></div>
+    <div class="project-card"><span class="project-tag">Parceria estratégica</span><h3>Visita à Poços TecMA</h3><p>Apresentação de portfólio à referência maranhense em usinagem, engenharia e caldeiraria industrial. Discussão de parcerias e conexão academia–indústria.</p></div>
+  </div>
+</section>
+</div>
+
+<div class="contact-bg">
+<section class="section fade-in" id="contato">
+  <div class="section-label">Fale conosco</div>
+  <div class="section-title">Entre em contato</div>
+  <div class="section-sub">Descubra como a Ágora pode contribuir com sua empresa</div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon-wrap"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.27-.84a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div><div class="contact-item-label">Telefone / WhatsApp</div><div class="contact-item-value">(98) 7000-4454</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon-wrap"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        <div><div class="contact-item-label">Instagram</div><div class="contact-item-value">@agoraengenhariajr</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon-wrap"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></div>
+        <div><div class="contact-item-label">LinkedIn</div><div class="contact-item-value">Ágora Engenharia Jr - OFICIAL</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon-wrap"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="contact-item-label">Endereço</div><div class="contact-item-value">Sala Ágora, CCT – UEMA<br>Cidade Universitária Paulo VI<br>São Luís, MA – CEP 65055-970</div></div>
+      </div>
+    </div>
+    <div class="contact-cta-box">
+      <h3>Precisa de um projeto de engenharia?</h3>
+      <p>A Ágora oferece soluções técnicas de qualidade com preço acessível. Desde análise estrutural e simulações FEA até prototipagem 3D e planos de manutenção.</p>
+      <p>Entre em contato e conte-nos sobre o seu projeto. Retornamos rapidamente!</p>
+      <a href="https://wa.me/5598970004454" class="btn-primary">Chamar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <img src="data:image/png;base64,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" class="footer-logo" alt="Ágora Engenharia Jr.">
+      <div class="footer-text">© 2026 · Universidade Estadual do Maranhão · São Luís, MA</div>
+    </div>
+    <div class="footer-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+}, {threshold: 0.1});
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
