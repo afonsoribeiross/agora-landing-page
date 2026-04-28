@@ -22,4 +22,4 @@ Fundada em 2017, a Ágora Engenharia Jr. é um projeto de extensão da UEMA comp
 🌐 [Ver página online](https://afonsoribeiross.github.io/agora-landing-page)
 
 ## Autor
-Afonso Ribeiro - Estudante de Engenharia Mecânica
+Afonso Ribeiro 
